@@ -1,18 +1,15 @@
 import React from 'react'
 import NavBar from '../Componentes/NavBar'
-import Hero from '../Componentes/Hero'
-import Posts from '../Componentes/Posts'
 import Footer from '../Componentes/Footer'
 
-const Home = () => {
+const Privacy = () => {
     return (
         <>
             <NavBar />
-            <Hero />
-            <Posts />
+            <div>Privacy</div>
             <Footer />
         </>
     )
 }
 
-export default Home
+export default Privacy

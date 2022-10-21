@@ -1,35 +1,29 @@
-import React, { useState, useEffect , useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReadMoreModal from './ReadMoreModal'
 import Card from './Card'
 import ScrollToTopButton from './ScrollToTopButton'
 
 const Posts = () => {
     const topDiv = useRef()
-    console.log(topDiv);
+    console.log(topDiv)
     const [postData, setPostData] = useState([])
     /*console.log(postData);*/
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [readMoreModal, setReadMoreModal] = useState(false)
     const [singlePostData, setSinglePostData] = useState(null)
-    const [scrollPosition, setScrollPosition]= useState(0)
-    console.log(scrollPosition);
+    const [scrollPosition, setScrollPosition] = useState(0)
+    console.log(scrollPosition)
 
-    const handleScrollPossition = ()=>{
-        const position= window.pageYOffset
+    const handleScrollPossition = () => {
+        const position = window.pageYOffset
         setScrollPosition(position)
-        
     }
 
-    
+    useEffect(() => {
+        window.addEventListener('scroll', handleScrollPossition)
+    }, [])
 
-    useEffect (
-        ()=>{
-            window.addEventListener("scroll", handleScrollPossition )
-            
-        },[]
-    )
-    
     const getPosts = async () => {
         setLoading(true)
         try {
@@ -80,10 +74,8 @@ const Posts = () => {
                     />
                 ) /*se è true renderizzami le props di readmodal*/
             }
-            <ScrollToTopButton 
-            />
+            <ScrollToTopButton />
         </div>
-        
     )
 }
 

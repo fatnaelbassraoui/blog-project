@@ -10,7 +10,6 @@ const CreateNewAccount = () => {
         <form>
             <h3>Create a New Account</h3>
             <div className="container">
-
                 <div>
                     <input
                         className="p-2 rounded-lg mb-2"

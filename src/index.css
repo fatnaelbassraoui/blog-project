@@ -5,3 +5,7 @@
 #sortbox:checked ~ #sortboxmenu {
     opacity: 1;
 }
+
+#backGroundImg {
+    background-image: url('/src/Assets/ImgPageNotFound.jfif');
+}

@@ -100,7 +100,6 @@ const Card = ({ post, toggle, setSingle }) => {
                     </button>
                 </form>
             </div>
-
         </>
     )
 }
