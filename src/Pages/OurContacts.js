@@ -8,6 +8,8 @@ import Instagram from '../Assets/Instagram.jpg'
 import Pinterest from '../Assets/Pinterest.jpg'
 import FormContactUs from '../Componentes/FormContactUs'
 import FollowMe from '../Assets/FollowMe.jpg'
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import "leaflet/dist/leaflet.css";
 
 const OurContacts = () => {
     return (
@@ -21,10 +23,10 @@ const OurContacts = () => {
                     <img className="w-[280px]" src={FollowMe} alt="followMe" />
                 </div>
                 <div className="flex flex-row justify-center pb-6">
-                    <img className="w-[80px]" src={Facebook} alt="facebook" />
-                    <img className="w-[80px]" src={Instagram} alt="instagram" />
-                    <img className="w-[80px]" src={Twittwr} alt="twitter" />
-                    <img className="w-[80px]" src={Pinterest} alt="pinterest" />
+                    <img className="w-[100px] p-2" src={Facebook} alt="facebook" />
+                    <img className="w-[100px] p-2" src={Instagram} alt="instagram" />
+                    <img className="w-[100px] p-2" src={Twittwr} alt="twitter" />
+                    <img className="w-[100px] p-2" src={Pinterest} alt="pinterest" />
                 </div>
                 <div className='  container flex flex-col items-center justify-center p-4 mx-auto'>
                     <div className="flex flex-col mx-auto w-[40%] ">
@@ -39,22 +41,22 @@ const OurContacts = () => {
                             leggerti!
                         </p>{' '}
                     </div>
-                    <div className="flex flex-col">
-                        <p className="font-semibold ">
+                    <div className="flex flex-col mx-auto w-[40%]">
+                        <p className="font-semibold p-2">
                             ✓ Hai bisogno di una Copywriter o Assistente
                             Virtuale ?{' '}
                         </p>{' '}
                         <p> Dai un’occhiata al mio sito web professionale</p>
                     </div>
-                    <div className=" flex flex-col">
-                        <p className="font-semibold ">
+                    <div className=" flex flex-col mx-auto w-[40%]">
+                        <p className="font-semibold p-2">
                             ✓ Hai bisogno di una Copywriter o Assistente
                             Virtuale ?{' '}
                         </p>{' '}
                         <p> Dai un’occhiata al mio sito web professionale</p>
                     </div>
-                    <div className="flex flex-col">
-                        <p className="font-semibold ">
+                    <div className="flex flex-col mx-auto w-[40%]">
+                        <p className="font-semibold p-2">
                             ✓ Vuoi farti un’idea in breve?{' '}
                         </p>{' '}
                         <p>
@@ -63,8 +65,8 @@ const OurContacts = () => {
                             servizi
                         </p>
                     </div>
-                    <div className=" flex flex-col">
-                        <p className="font-semibold ">
+                    <div className=" flex flex-col mx-auto w-[40%]">
+                        <p className="font-semibold p-2 ">
                             ✓ Con chi ho collaborato?
                         </p>{' '}
                         <p>
@@ -73,8 +75,8 @@ const OurContacts = () => {
                             Portfolio professionale
                         </p>
                     </div>
-                    <div className=" flex flex-col">
-                        <p className="font-semibold ">✓ Hai dei dubbi? </p>{' '}
+                    <div className=" flex flex-col mx-auto w-[40%]">
+                        <p className="font-semibold p-2">✓ Hai dei dubbi? </p>{' '}
                         <p>
                             {' '}
                             Leggi la sezione FAQ dove troverai le risposte alle
@@ -83,6 +85,15 @@ const OurContacts = () => {
                     </div>
                 </div>
             </div>
+            <MapContainer 
+            style={{height:'400px'}}
+            center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+ 
+</MapContainer>
             <ScrollToTopButton />
             <Footer />
         </>

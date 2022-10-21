@@ -1,12 +1,13 @@
 import React from 'react'
 import NavBar from '../Componentes/NavBar'
 import Footer from '../Componentes/Footer'
+import PrivacyDetails from '../Componentes/PrivacyDetails'
 
 const Privacy = () => {
     return (
         <>
             <NavBar />
-            <div>Privacy</div>
+            <PrivacyDetails/>
             <Footer />
         </>
     )
