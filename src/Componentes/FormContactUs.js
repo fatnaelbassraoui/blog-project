@@ -3,6 +3,7 @@ import ContactImg from '../Assets/ContactImg.png'
 
 const FormContactUs = () => {
     const [formValue, setFormValue] = useState({})
+    
 
     const saveToLocalstorage = (e) => {
         e.preventDefault()
@@ -89,7 +90,7 @@ const FormContactUs = () => {
                         </div>
                         <button
                             type='submit'
-                            className='w-full p-3 font-bold uppercase rounded bg-pink-100'
+                            className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-purple-200 w-full p-3 font-bold uppercase rounded bg-pink-100'
                         >
                             save
                         </button>

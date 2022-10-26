@@ -2,19 +2,23 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReadMoreModal from './ReadMoreModal'
 import Card from './Card'
 import ScrollToTopButton from './ScrollToTopButton'
+import LikeAndDislikeButton from './LikeAndDislikeButton'
+import useFetch from './useFetch'
+import { FaHeart} from 'react-icons/fa';
 
 const Posts = () => {
     const topDiv = useRef()
-    console.log(topDiv)
     const [postData, setPostData] = useState([])
-    /*console.log(postData);*/
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [readMoreModal, setReadMoreModal] = useState(false)
     const [singlePostData, setSinglePostData] = useState(null)
     const [scrollPosition, setScrollPosition] = useState(0)
-    console.log(scrollPosition)
+    const [favoriteList,setFavoriteList]=useState([])
+    const [favoritePost, setFavoritePost]=useState(null)
+    
 
+    
     const handleScrollPossition = () => {
         const position = window.pageYOffset
         setScrollPosition(position)
@@ -37,6 +41,10 @@ const Posts = () => {
         }
     }
 
+    const {data, dataLoading,err}= useFetch('https://jsonplaceholder.typicode.com/posts')
+    console.log(data, dataLoading, err);
+    
+
     const toggleReadMoreModal = () => setReadMoreModal(!readMoreModal) //Toggle: imposto readMoreModal al contrario di quello che è.Se è false diventa vero e viceversa
 
     useEffect(() => {
@@ -44,7 +52,12 @@ const Posts = () => {
     }, [])
 
     return (
-        <div className="container flex justify-center items-center">
+        <>
+         <div className='flex justify-end items-center p-2 py-8'>
+              <p className='mr-4'>My favorite list</p>  <LikeAndDislikeButton array={favoriteList}/>
+            </div>
+        <div className="container flex flex-col justify-center items-center">
+           
             <div ref={topDiv}></div>
             {loading && !error && <h1>Caricamento in corso...</h1>}
             {error && !loading && <h1>Ops si è verificato un errore..</h1>}
@@ -56,12 +69,16 @@ const Posts = () => {
                         /*console.log(post);*/
 
                         return (
+                            <div className='flex flex-col justify-center p-2'>
                             <Card
                                 key={index}
                                 post={post}
                                 toggle={setReadMoreModal}
                                 setSingle={setSinglePostData}
+                                
                             />
+                            <button className='flex justify-center' onClick={()=>setFavoriteList(prev=>[...prev,post.title])}><FaHeart/></button>
+                            </div>
                         )
                     })}
             </div>
@@ -76,6 +93,7 @@ const Posts = () => {
             }
             <ScrollToTopButton />
         </div>
+        </>
     )
 }
 

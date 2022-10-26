@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 const Card = ({ post, toggle, setSingle }) => {
     const [formData, setFormData] = useState(null)
 
@@ -32,21 +33,22 @@ const Card = ({ post, toggle, setSingle }) => {
 
     return (
         <>
-            <div className=" text-center w-[300px] border-separate border-spacing-2 border border-slate-400 rounded ">
+            <div className=" text-center w-[300px] border-separate border-spacing-2 border border-slate-400 rounded-[6%] ">
                 <div className="flex item-center justify-center">
                     <img
                         src="https://picsum.photos/200"
                         alt="img"
-                        className="w-[200px] h-[200px] rounded-[100%] "
+                        className="w-[295px] h-[200px] rounded-t-[8%] "
                     />
                 </div>
-                <p className="bg-slate-50 border border-slate-300 text-l">
+                <p className="bg-slate-50 border border-slate-300 text-l font-semibold">
                     {post.title.slice(0, 8)}
                 </p>
                 <h5 className=" bg-slate-100 text-center text-xl  text-pink-500 font-bold 0 border border-slate-300 ">
                     Body
                 </h5>
-                <p className="bg-slate-50 border border-slate-300 text-l h-[50px]">{`${post.body.slice(
+                <p className="bg-slate-50 border border-slate-300 text-l h-[50px] font-semibold">
+                    {`${post.body.slice(
                     0,
                     40
                 )}...`}</p>
@@ -72,8 +74,9 @@ const Card = ({ post, toggle, setSingle }) => {
 
                 <form onSubmit={updateCard} className="flex flex-col">
                     <input
+                    className='mx-4 p-2 bg-zinc-100'
                         type="text"
-                        placeholder="title"
+                        placeholder="Edit title"
                         onChange={(e) =>
                             setFormData({
                                 ...formData,
@@ -82,8 +85,9 @@ const Card = ({ post, toggle, setSingle }) => {
                         }
                     />
                     <input
+                        className='mx-4 p-2 bg-zinc-100'
                         type="text"
-                        placeholder="body"
+                        placeholder="Edit body"
                         onChange={(e) =>
                             setFormData({
                                 ...formData,

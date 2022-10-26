@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../Componentes/NavBar'
 import Footer from '../Componentes/Footer'
 import ScrollToTopButton from '../Componentes/ScrollToTopButton'
@@ -8,10 +8,26 @@ import Instagram from '../Assets/Instagram.jpg'
 import Pinterest from '../Assets/Pinterest.jpg'
 import FormContactUs from '../Componentes/FormContactUs'
 import FollowMe from '../Assets/FollowMe.jpg'
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 
 const OurContacts = () => {
+    const [currentPosition, setCurrentPosition] = useState(null)
+    console.log(currentPosition);
+
+    const currentUserPosition = () => {
+        return navigator.geolocation.getCurrentPosition(
+            position => setCurrentPosition({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            }),
+            error => console.log(error)
+        )
+    }
+
+    useEffect(() => {
+        currentUserPosition()
+    }, [])
     return (
         <>
             <NavBar />
@@ -30,14 +46,14 @@ const OurContacts = () => {
                 </div>
                 <div className='  container flex flex-col items-center justify-center p-4 mx-auto'>
                     <div className="flex flex-col mx-auto w-[40%] ">
-                        <p className="font-semibold p-2">
+                        <p className="font-semibold p-2 ">
                             ✓ Vuoi propormi una collaborazione?
                         </p>{' '}
                         <p>
                             {' '}
                             Se desideri propormi nuovi progetti o iniziative
                             interessanti, scrivimi compilando il form qui sopra
-                            o via mail [info@langolinodiale.com], sarò felice di
+                            o via mail [info@langolinodellalettura.com], sarò felice di
                             leggerti!
                         </p>{' '}
                     </div>
@@ -85,15 +101,19 @@ const OurContacts = () => {
                     </div>
                 </div>
             </div>
-            <MapContainer 
-            style={{height:'400px'}}
-            center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
- 
-</MapContainer>
+            {currentPosition &&
+                <MapContainer
+                    style={{ height: '400px' }}
+                    center={currentPosition} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={currentPosition}>
+                        <Popup>You are here</Popup>
+                    </Marker>
+                </MapContainer>
+            }
             <ScrollToTopButton />
             <Footer />
         </>
