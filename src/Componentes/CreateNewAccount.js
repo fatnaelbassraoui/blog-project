@@ -50,7 +50,19 @@ const CreateNewAccount = () => {
                         }
                     ></input>
                 </div>
-
+                <div>
+                    <input
+                        className="p-2 rounded-lg mb-2"
+                        type="email"
+                        placeholder="e-mail"
+                        onChange={(e) =>
+                            setFormValue({
+                                ...formValue,
+                                email: e.target.value,
+                            })
+                        }
+                    ></input>
+                </div>
                 <div>
                     <input
                         className="p-2 rounded-lg mb-2"
@@ -68,41 +80,12 @@ const CreateNewAccount = () => {
                 <div>
                     <input
                         className="p-2 rounded-lg mb-2"
-                        type="number"
-                        min="18"
-                        placeholder="Age"
+                        type="text"
+                        placeholder="User Name"
                         onChange={(e) =>
                             setFormValue({
                                 ...formValue,
-                                age: e.target.value,
-                            })
-                        }
-                    ></input>
-                </div>
-
-                <div>
-                    <input
-                        className="p-2 rounded-lg mb-2"
-                        type="tel"
-                        placeholder="Phone number"
-                        onChange={(e) =>
-                            setFormValue({
-                                ...formValue,
-                                phoneNumber: e.target.value,
-                            })
-                        }
-                    ></input>
-                </div>
-
-                <div>
-                    <input
-                        className="p-2 rounded-lg mb-2"
-                        type="email"
-                        placeholder="e-mail"
-                        onChange={(e) =>
-                            setFormValue({
-                                ...formValue,
-                                email: e.target.value,
+                                userName: e.target.value,
                             })
                         }
                     ></input>

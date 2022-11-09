@@ -9,13 +9,10 @@ export const FooterLinksOne = [
         title: 'Our Contacts',
         link: '/our-contacts',
     },
-    
+
     {
         id: 'privacy',
         title: 'Privacy',
         link: '/privacy',
-    }
+    },
 ]
-
-
-

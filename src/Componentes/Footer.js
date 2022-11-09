@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import LogoNavbar from '../Assets/Logo.png'
-import { FooterLinksOne} from '../Constants/FooterLinks'
+import { FooterLinksOne } from '../Constants/FooterLinks'
 import { v4 as uuidv4 } from 'uuid'
 
 const Footer = () => {
@@ -23,9 +23,12 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <div className='flex justify-center mt-2'>
-                    
-                        <p className='text-xs'>Istituto della Enciclopedia Italiana fondata da Giovanni Treccani S.p.A. © Tutti i diritti riservati | Partita Iva 007462411000</p>
+                    <div className="flex justify-center mt-2">
+                        <p className="text-xs">
+                            Istituto della Enciclopedia Italiana fondata da
+                            Giovanni Treccani S.p.A. © Tutti i diritti riservati
+                            | Partita Iva 007462411000
+                        </p>
                     </div>
                 </div>
             </div>

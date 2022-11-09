@@ -7,7 +7,7 @@ const Privacy = () => {
     return (
         <>
             <NavBar />
-            <PrivacyDetails/>
+            <PrivacyDetails />
             <Footer />
         </>
     )

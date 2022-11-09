@@ -1,48 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React,{useEffect,useState, useRef} from 'react'
 import ReadMoreModal from './ReadMoreModal'
 import Card from './Card'
 import ScrollToTopButton from './ScrollToTopButton'
 import LikeAndDislikeButton from './LikeAndDislikeButton'
-import FeaturedPost from './FeaturedPost'
 
-
-
-
-const Posts = () => {
-    const topDiv = useRef()
-    const [postData, setPostData] = useState([])
+const FeaturedPost = () => {
+  const topDiv = useRef()
+  const [postData, setPostData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [readMoreModal, setReadMoreModal] = useState(false)
     const [singlePostData, setSinglePostData] = useState(null)
     const [favoriteList, setFavoriteList] = useState([])
-       
+
     const getPosts = async () => {
-        setLoading(true)
-        try {
-            const myPosts = await fetch(
-                'http://localhost:3030/post/type?featured=false'
-            )
-            setLoading(false)
-            return await myPosts.json()
-        } catch (error) {
-            setError(error)
-        }
-    }
+      setLoading(true)
+      try {
+          const myPosts = await fetch(
+              'http://localhost:3030/post/type?featured=true'
+          )
+          setLoading(false)
+          return await myPosts.json()
+      } catch (error) {
+          setError(error)
+      }
+  }
+  const toggleReadMoreModal = () => setReadMoreModal(!readMoreModal)   
+  useEffect(() => {
+    getPosts().then((res) => setPostData(res))
+}, [])
 
-
-    // const {data, dataLoading,err}= useFetch('http://localhost:3030/posts')
-    // console.log(data);
-
-
-    const toggleReadMoreModal = () => setReadMoreModal(!readMoreModal) //Toggle: imposto readMoreModal al contrario di quello che è.Se è false diventa vero e viceversa
-
-    useEffect(() => {
-        getPosts().then((res) => setPostData(res))
-    }, [])
-
-    return (
-        <>
+  return (
+    <>
             <div className='flex justify-end items-center p-2 py-8'>
                 <p className='mr-4'>My favorite list</p>  <LikeAndDislikeButton array={favoriteList} />
             </div>
@@ -86,7 +75,8 @@ const Posts = () => {
                 <ScrollToTopButton />
             </div>
         </>
-    )
+   
+  )
 }
 
-export default Posts
+export default FeaturedPost

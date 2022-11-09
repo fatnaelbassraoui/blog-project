@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LogoNavbar from '../Assets/Logo.png'
 import ModalLogin from './ModalLogin'
-import { NavbarLinks } from '../Constants/NavBar'
+import { NavbarLinks } from '../Constants/NavBarLink'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
@@ -15,13 +15,15 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div>
-                {NavbarLinks.map((link) => {
-                            return (
-                                <Link  to={link.link}>
-                                    <p>{link.title}</p>
-                                </Link>
-                            )
-                        })}
+                    {NavbarLinks.map((link,index) => {
+                        return (
+                            <Link 
+                            key={index}
+                            to={link.link}>
+                                <p>{link.title}</p>
+                            </Link>
+                        )
+                    })}
                 </div>
                 <button
                     className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 w-24  rounded-full bg-pink-400"

@@ -11,7 +11,7 @@ const ReadMoreModal = ({ close, singlePost }) => {
                     >
                         X
                     </div>
-                    <h1>{singlePost.title}</h1>
+                    <h1>{singlePost.author}</h1>
                     <p>{singlePost.body}</p>
                 </div>
             </div>

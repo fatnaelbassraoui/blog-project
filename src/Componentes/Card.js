@@ -1,109 +1,65 @@
 import React, { useState } from 'react'
+import { FaHeart } from 'react-icons/fa'
+import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash'
 
-
-const Card = ({ post, toggle, setSingle }) => {
-    const [formData, setFormData] = useState(null)
-
-    const deleteCard = async () => {
+const Card = ({ post, toggle, setSingle, favoritList}) => {
+    const url = `http://localhost:3030/posts/${post._id}`
+    const deletePost = async ()=>{
         try {
-            await fetch('https://jsonplaceholder.typicode.com/posts/1', {
-                method: 'DELETE',
-            })
-                .then((res) => res.json())
-                .then(console.log)
+            await fetch(url,{
+                method: 'DELETE'
+            }
+                ).then(res=>window.location.reload())
+
+            
         } catch (error) {
-            console.log(error)
+            
+            console.log(error);
         }
     }
-
-    const updateCard = async (e) => {
-        e.preventDefault()
-        try {
-            await fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(formData),
-            })
-                .then((res) => res.json())
-                .then(console.log)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     return (
         <>
-            <div className=" text-center w-[300px] border-separate border-spacing-2 border border-slate-400 rounded-[6%] ">
-                <div className="flex item-center justify-center">
+            <div
+            className=" text-center w-[250px] bg-zinc-100 ">
+                <div>
                     <img
-                        src="https://picsum.photos/200"
-                        alt="img"
-                        className="w-[295px] h-[200px] rounded-t-[8%] "
+                        src={post.img}
+                        className="object-center object-cover w-full rounded-md h-52"
                     />
-                </div>
-                <p className="bg-slate-50 border border-slate-300 text-l font-semibold">
-                    {post.title.slice(0, 8)}
-                </p>
-                <h5 className=" bg-slate-100 text-center text-xl  text-pink-500 font-bold 0 border border-slate-300 ">
-                    Body
-                </h5>
-                <p className="bg-slate-50 border border-slate-300 text-l h-[50px] font-semibold">
-                    {`${post.body.slice(
-                    0,
-                    40
-                )}...`}</p>
-                <div className="button">
-                    <span>
+                    <div className="flex flex-col justify-center p-6 space-y-8">
+                        <div className="space-y-2">
+                            <h2 className="text-xl font-bold">{post.author}</h2>
+                            <p>{`${post.body.slice(0, 40)}...`}</p>
+                        </div>
                         <button
+                            className="flex justify-center items-center w-full p-3 rounded-md bg-[#ff0099]"
                             onClick={() => [toggle(true), setSingle(post)]}
-                            className="bg-red-200 w-[100%]  text-xl text-pink-500 font-bold"
                         >
-                            Read All
+                            Read more
                         </button>
-                    </span>
-                    <hr />
-                    <span>
-                        <button
-                            onClick={() => deleteCard()}
-                            className="bg-red-200 w-[100%]  text-xl text-pink-500 font-bold"
-                        >
-                            DELETE POST
-                        </button>
-                    </span>
+                        <div className="flex  justify-evenly items-center">
+                            <button
+                                className="flex justify-center"
+                                onClick={() =>
+                                    favoritList((prev) => [
+                                        ...prev,
+                                        post.title,
+                                    ])
+                                }
+                            >
+                                <FaHeart />
+                            </button>
+                            <button
+                            onClick={()=>deletePost()}
+
+                            >
+                                <RestoreFromTrashIcon />
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-                <form onSubmit={updateCard} className="flex flex-col">
-                    <input
-                    className='mx-4 p-2 bg-zinc-100'
-                        type="text"
-                        placeholder="Edit title"
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                title: e.target.value,
-                            })
-                        }
-                    />
-                    <input
-                        className='mx-4 p-2 bg-zinc-100'
-                        type="text"
-                        placeholder="Edit body"
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                body: e.target.value,
-                            })
-                        }
-                    />
-
-                    <button
-                        type="submit"
-                        className="  text-xl text-pink-500 font-bold"
-                    >
-                        POST
-                    </button>
-                </form>
             </div>
+            
         </>
     )
 }

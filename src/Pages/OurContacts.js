@@ -9,19 +9,20 @@ import Pinterest from '../Assets/Pinterest.jpg'
 import FormContactUs from '../Componentes/FormContactUs'
 import FollowMe from '../Assets/FollowMe.jpg'
 import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet'
-import "leaflet/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css'
 
 const OurContacts = () => {
     const [currentPosition, setCurrentPosition] = useState(null)
-    console.log(currentPosition);
+    console.log(currentPosition)
 
     const currentUserPosition = () => {
         return navigator.geolocation.getCurrentPosition(
-            position => setCurrentPosition({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            }),
-            error => console.log(error)
+            (position) =>
+                setCurrentPosition({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                }),
+            (error) => console.log(error)
         )
     }
 
@@ -39,12 +40,28 @@ const OurContacts = () => {
                     <img className="w-[280px]" src={FollowMe} alt="followMe" />
                 </div>
                 <div className="flex flex-row justify-center pb-6">
-                    <img className="w-[100px] p-2" src={Facebook} alt="facebook" />
-                    <img className="w-[100px] p-2" src={Instagram} alt="instagram" />
-                    <img className="w-[100px] p-2" src={Twittwr} alt="twitter" />
-                    <img className="w-[100px] p-2" src={Pinterest} alt="pinterest" />
+                    <img
+                        className="w-[100px] p-2"
+                        src={Facebook}
+                        alt="facebook"
+                    />
+                    <img
+                        className="w-[100px] p-2"
+                        src={Instagram}
+                        alt="instagram"
+                    />
+                    <img
+                        className="w-[100px] p-2"
+                        src={Twittwr}
+                        alt="twitter"
+                    />
+                    <img
+                        className="w-[100px] p-2"
+                        src={Pinterest}
+                        alt="pinterest"
+                    />
                 </div>
-                <div className='  container flex flex-col items-center justify-center p-4 mx-auto'>
+                <div className="  container flex flex-col items-center justify-center p-4 mx-auto">
                     <div className="flex flex-col mx-auto w-[40%] ">
                         <p className="font-semibold p-2 ">
                             ✓ Vuoi propormi una collaborazione?
@@ -53,8 +70,8 @@ const OurContacts = () => {
                             {' '}
                             Se desideri propormi nuovi progetti o iniziative
                             interessanti, scrivimi compilando il form qui sopra
-                            o via mail [info@langolinodellalettura.com], sarò felice di
-                            leggerti!
+                            o via mail [info@langolinodellalettura.com], sarò
+                            felice di leggerti!
                         </p>{' '}
                     </div>
                     <div className="flex flex-col mx-auto w-[40%]">
@@ -101,10 +118,13 @@ const OurContacts = () => {
                     </div>
                 </div>
             </div>
-            {currentPosition &&
+            {currentPosition && (
                 <MapContainer
                     style={{ height: '400px' }}
-                    center={currentPosition} zoom={13} scrollWheelZoom={false}>
+                    center={currentPosition}
+                    zoom={13}
+                    scrollWheelZoom={false}
+                >
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -113,7 +133,7 @@ const OurContacts = () => {
                         <Popup>You are here</Popup>
                     </Marker>
                 </MapContainer>
-            }
+            )}
             <ScrollToTopButton />
             <Footer />
         </>

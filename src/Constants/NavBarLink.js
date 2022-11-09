@@ -1,7 +1,7 @@
-export const NavbarLinks=[
+export const NavbarLinks = [
     {
         id: 'homeLink',
         title: 'Home',
         link: '/home',
-    }
+    },
 ]

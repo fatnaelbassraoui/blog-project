@@ -14,7 +14,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/About-us" element={<AboutUsStory />} />
                 <Route path="/our-contacts" element={<OurContacts />} />
-                < Route path="/privacy" element={<Privacy/>}/>
+                <Route path="/privacy" element={<Privacy />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>
