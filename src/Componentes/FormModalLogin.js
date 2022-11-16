@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useDispatch,useSelector } from 'react-redux'
+import {useDispatch } from 'react-redux'
 import {loggedInUser} from '../States/userInfoSlice'
 
 const FormModalLogin = () => {
@@ -11,12 +11,11 @@ const FormModalLogin = () => {
 
     const loginUser = (e) => {
         e.preventDefault()
-        const data = {
+        const formData = {
             email:formValue.email,
             password: formValue.password
         }
-        // localStorage.setItem('Faty', JSON.stringify(formValue))
-        dispatch(loggedInUser(data))
+        dispatch(loggedInUser(formData))
     }
     return (
         <form
