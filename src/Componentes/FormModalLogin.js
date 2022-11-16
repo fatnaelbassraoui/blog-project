@@ -1,13 +1,29 @@
 import React, { useState } from 'react'
+import {useDispatch,useSelector } from 'react-redux'
+import {loggedInUser} from '../States/userInfoSlice'
 
 const FormModalLogin = () => {
     const [formValue, setFormValue] = useState({})
+    console.log(formValue);
 
-    const saveToLocalstorage = () => {
-        localStorage.setItem('Faty', JSON.stringify(formValue))
+    
+    const dispatch = useDispatch()
+
+    const loginUser = (e) => {
+        e.preventDefault()
+        const data = {
+            email:formValue.email,
+            password: formValue.password
+        }
+        // localStorage.setItem('Faty', JSON.stringify(formValue))
+        dispatch(loggedInUser(data))
     }
     return (
-        <form>
+        <form
+        onSubmit={
+            loginUser
+        }
+        >
             <div className="container">
                 <div>
                     <input
@@ -37,7 +53,7 @@ const FormModalLogin = () => {
                 </div>
                 <button
                     className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-purple-200 p-2 rounded-lg mb-2 bg-purple-100 "
-                    onClick={() => saveToLocalstorage()}
+                    type='submit'
                 >
                     Save
                 </button>

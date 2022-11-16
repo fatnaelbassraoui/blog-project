@@ -7,7 +7,8 @@ import { Provider } from 'react-redux'
 import postReducer from './States/postSlice'
 import featuredPostReducer from './States/postFeaturedSlice'
 import  favorite  from './States/favoriteSlice'
-import postById from './States/readMoreSlice'
+import loginSliceReducer from './States/userInfoSlice'
+
 
 
 
@@ -15,10 +16,14 @@ const reducer = combineReducers({
         posts:postReducer,
         postsFeatured: featuredPostReducer,
         favorits:favorite,
-        postsById:postById
+        userLoginData:loginSliceReducer
 })
 const store = configureStore({
-  reducer
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
