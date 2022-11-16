@@ -1,8 +1,18 @@
 import React from 'react'
+import bgHero from '../Assets/bg-hero.jpg'
 
 const Hero = () => {
     return (
-        <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+        <section 
+            className="py-6 dark:bg-gray-800 dark:text-gray-50 h-80"
+            style={{
+                backgroundImage: `url("${bgHero}")`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center'
+
+            }}
+        >
             <div className="container mx-auto w-[70%] flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">
                 <div className="flex flex-col space-y-4 text-center lg:text-left">
                     <h1 className="text-5xl font-bold leading-none">

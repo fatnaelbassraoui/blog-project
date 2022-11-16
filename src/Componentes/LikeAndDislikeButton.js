@@ -1,10 +1,15 @@
 import React from 'react'
-import { FaRegHeart } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import { useSelector } from 'react-redux';
+import { favorite } from '../States/favoriteSlice';
 
-const LikeAndDislikeButton = ({ array }) => {
+const LikeAndDislikeButton = () => {
+
+    const favoriteList = useSelector(favorite)
     return (
         <>
-            <div className="relative mt-2 text-black">
+            <div className="relative mt-2 text-pink-300">
                 <input
                     type="checkbox"
                     id="sortbox"
@@ -14,8 +19,8 @@ const LikeAndDislikeButton = ({ array }) => {
                     htmlFor="sortbox"
                     className="flex items-center space-x-1 cursor-pointer"
                 >
-                    <span className="text-lg">
-                        <FaRegHeart />
+                    <span className="text-lg ">
+                        <FaHeart />
                     </span>
                     <svg
                         className="h-4 w-4"
@@ -37,15 +42,17 @@ const LikeAndDislikeButton = ({ array }) => {
                     id="sortboxmenu"
                     className="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-100 border border-gray-400 transition delay-75 ease-in-out z-10  w-[200px]"
                 >
-                    <ul className="block t text-gray-900">
-                        {array && array.length <= 0 ? (
+                    <ul className="block  text-gray-900 ">
+                        {favoriteList && favoriteList.length <= 0 ? (
                             <p>La lista è vuota</p>
                         ) : (
-                            array.map((favorite) => {
+                            favoriteList.map((favorite, index) => {
                                 console.log(favorite)
                                 return (
-                                    <li className="p-2 text-justify font-semibold">
-                                        {favorite}
+                                    <li
+                                    key={index}
+                                    className=" ml-8 p-2 flex flex-row text-justify font-semibold list-disc ">
+                                       <StarOutlineIcon/> {favorite} 
                                     </li>
                                 )
                             })

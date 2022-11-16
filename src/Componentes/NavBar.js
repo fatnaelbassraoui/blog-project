@@ -8,7 +8,7 @@ const NavBar = () => {
     const [modalForm, setModalForm] = useState(false)
     return (
         <nav>
-            <div className="flex bg-[#ff0099] p-4 text-white justify-between">
+            <div className="flex bg-pink-500 p-4 text-white justify-between">
                 <div className="flex items-center">
                     <div className="mr-4">
                         <img src={LogoNavbar} width={150} alt="img" />
