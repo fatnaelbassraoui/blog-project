@@ -1,30 +1,27 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 const initialState = {
     loading: false,
-    userInfo: {}, // conterrà tutto l'utente (che riceviamo dal backend in caso di esito 200 
+    userInfo: null, // conterrà tutto l'utente (che riceviamo dal backend in caso di esito 200
     error: null,
     success: null
 }
 
 export const loggedInUser = createAsyncThunk( //è un metodo di reduce che gestisce le chiamate api
     'user/loggedInUser',
-    async ({ email,password}, thunkAPI) => {
-        try {
-            const response = await fetch(`http://localhost:3030/login`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    email,
-                    password
-                })
+    async (data, { rejectWithValue }) => {
+        return await axios
+            .post(`http://localhost:3030/login`, data)
+            .then((resp) => {
+                return resp.data
             })
-            const dataResponse = await response.json()
-            return dataResponse
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error)
-        }
+            .catch((error) => {
+                return rejectWithValue(error)
+            })
     }
 )
+
 
 
 const loginSlice = createSlice({
@@ -36,18 +33,18 @@ const loginSlice = createSlice({
             .addCase(loggedInUser.pending, (state) => {
                 state.loading = true
                 state.error = null
-
             })
             .addCase(loggedInUser.fulfilled, (state, action) => {
+                console.log(action.payload)
                 state.loading = false
                 state.error = null
-                state.userLogin = action.payload
-                state.success = "login effettuato con successo"
+                state.userInfo = action.payload
+                state.success = action.payload.message
             })
             .addCase(loggedInUser.rejected, (state, action) => {
+                console.log(action.payload)
                 state.loading = false
-                state.error = action.payload
-
+                state.error = action.payload.message
             })
 
     }
