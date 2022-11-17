@@ -10,6 +10,7 @@ import {insertInFavorite} from '../States/favoriteSlice'
 
 const Card = ({ post, toggle, setSingle }) => {
     const url = `http://localhost:3030/posts/type/${post._id}`
+    console.log(url);
 
     const dispatch = useDispatch()
     
