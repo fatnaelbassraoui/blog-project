@@ -1,28 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import axios from "axios";
 const initialState = {
-    loading: false,
     userInfo: {}, // conterrà tutto l'utente (che riceviamo dal backend in caso di esito 200 
+    loading: false,
     error: null,
     success: null
 }
 
 export const loggedInUser = createAsyncThunk( //è un metodo di reduce che gestisce le chiamate api
     'user/loggedInUser',
-    async ({ email,password}, thunkAPI) => {
-        try {
-            const response = await fetch(`http://localhost:3030/login`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    email,
-                    password
-                })
+    async (data, { rejectWithValue }) => {
+        return await axios
+            .post(`${process.env.REACT_APP_SERVER_BASE_URL}/login`, data)
+            .then((resp) => {
+                if(resp.status===200){
+                    localStorage.setItem('userData', JSON.stringify(resp.data))
+                }
+                return resp.data
             })
-            const dataResponse = await response.json()
-            return dataResponse
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error)
-        }
+            .catch((error) => {
+                return rejectWithValue(error)
+            })
     }
 )
 
@@ -30,8 +28,7 @@ export const loggedInUser = createAsyncThunk( //è un metodo di reduce che gesti
 const loginSlice = createSlice({
     name: 'userLogin',
     initialState,
-
-    extraReducers: (builder) => { // extraReducers si usa quando si fa un achiamata esterna ovvero chiamata api
+    extraReducers: (builder) => { // extraReducers si usa quando si fa una chiamata esterna ovvero chiamata api
         builder
             .addCase(loggedInUser.pending, (state) => {
                 state.loading = true
@@ -41,8 +38,8 @@ const loginSlice = createSlice({
             .addCase(loggedInUser.fulfilled, (state, action) => {
                 state.loading = false
                 state.error = null
-                state.userLogin = action.payload
-                state.success = "login effettuato con successo"
+                state.userInfo = action.payload
+                state.success = action.payload.message
             })
             .addCase(loggedInUser.rejected, (state, action) => {
                 state.loading = false

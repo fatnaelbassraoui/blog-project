@@ -9,9 +9,8 @@ import {insertInFavorite} from '../States/favoriteSlice'
 
 
 const Card = ({ post, toggle, setSingle }) => {
-    const url = `http://localhost:3030/posts/type/${post._id}`
-    console.log(url);
-
+    const url = `${process.env.REACT_APP_SERVER_BASE_URL}/posts/${post._id}`
+   
     const dispatch = useDispatch()
     
 
@@ -66,12 +65,7 @@ const Card = ({ post, toggle, setSingle }) => {
                     <button
                         className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
                         onClick={() =>[
-                            // favoritList((prev) => [
-                            //     ...prev,
-                            //     post.author
-                            // ]),
                             dispatch(insertInFavorite(post.author))
-
                         ]
                             
                         }
@@ -85,7 +79,7 @@ const Card = ({ post, toggle, setSingle }) => {
                     >
                         <RestoreFromTrashIcon />
                     </button>
-                    {!post.featured && 
+                    {post.featured && 
                     <div
                     className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
                     >
