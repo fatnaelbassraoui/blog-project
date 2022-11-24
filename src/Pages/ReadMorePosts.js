@@ -9,7 +9,8 @@ import Footer from '../Componentes/Footer'
 const ReadMorePosts = ({post}) => {
   console.log(post);
     const {id} = useParams()
-    const {data, loading, error}= useFetch(`http://localhost:3030/posts/${id}`)
+    const {data, loading, error}= useFetch(`${process.env.REACT_APP_SERVER_BASE_URL}/posts/${id}`)
+    console.log(data);
   return (
     <>
             <NavBar/>

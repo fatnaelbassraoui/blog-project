@@ -6,7 +6,7 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(
-    (e) => {
+    () => {
       (async () => {
         try {
           setLoading(true);
