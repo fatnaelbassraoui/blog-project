@@ -51,7 +51,7 @@ const Card = ({ post, toggle, setSingle }) => {
                         >
                         <button
                             className=" w-[100px] p-2 mt-2 rounded-md bg-pink-300"
-                             onClick={() => [toggle(true), setSingle(post)]}
+                             onClick={() => [ setSingle(post)]}
                         >
                             Read more
                         </button>
