@@ -29,13 +29,16 @@ const NavBar = () => {
     
     return (
         <nav>
-            <div className="flex bg-pink-500 p-4 text-white justify-between">
+            <div className="flex item-center bg-pink-500 p-4 text-white justify-between">
                 <div className="flex items-center">
                     <div className="mr-4">
                         <img src={LogoNavbar} width={150} alt="img" />
                     </div>
+                    <div className="flex items-center ">
+                        <h1 class>Faty Blog</h1>
+                    </div>
                 </div>
-                <div>
+                <div className='flex justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-24  rounded-full bg-pink-500'>
                     {NavbarLinks.map((link, index) => {
                         return (
                             <Link
@@ -46,11 +49,12 @@ const NavBar = () => {
                         )
                     })}
                 </div>
-                <div className='rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 w-24  rounded-full bg-pink-400'>
-                    <LikeAndDislikeButton />
+                <div className='flex flex-row  justify-center item-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-[150px] p-1  rounded-full bg-pink-500'>
+                 <p className='pt-1 mr-1 '>Favorite List </p> 
+                 <LikeAndDislikeButton />
                 </div>
                 <button
-                    className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 w-24  rounded-full bg-pink-400"
+                    className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-24  rounded-full bg-pink-500"
                     onClick={() => setModalForm(true)}
                 >
                     Login
