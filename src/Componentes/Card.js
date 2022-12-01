@@ -5,14 +5,17 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {insertInFavorite} from '../States/favoriteSlice'
+import useLocalStorage from './useLocalStorage'
 
 
 
-const Card = ({ post, toggle, setSingle }) => {
+const Card = ({ post, setSingle }) => {
     const url = `${process.env.REACT_APP_SERVER_BASE_URL}/posts/${post._id}`
    
     const dispatch = useDispatch()
     
+    const {loggedInUser} = useLocalStorage()
+ 
 
     const deletePost = async () => {
         try {
@@ -62,7 +65,7 @@ const Card = ({ post, toggle, setSingle }) => {
                     <div
                     className=' flex flex-col  top-1 right-1 mt-2 mb-2 absolute'
                     >
-                    <button
+                    {loggedInUser && <button
                         className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
                         onClick={() =>[
                             dispatch(insertInFavorite(post.author))
@@ -72,13 +75,13 @@ const Card = ({ post, toggle, setSingle }) => {
                     >
                         <FaHeart />
                         
-                    </button>
-                    <button
+                    </button>}
+                   {loggedInUser && <button
                         onClick={() => deletePost()}
                         className="text-xs m-auto p-2 mb-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
                     >
                         <RestoreFromTrashIcon />
-                    </button>
+                    </button>}
                     {post.featured && 
                     <div
                     className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"

@@ -5,21 +5,14 @@ import { NavbarLinks } from '../Constants/NavBarLink'
 import { Link } from 'react-router-dom'
 import LikeAndDislikeButton from '../Componentes/LikeAndDislikeButton'
 import LogOut from './LogOut'
+import useLocalStorage from './useLocalStorage'
 
 const NavBar = () => {
     const [modalForm, setModalForm] = useState(false)
-    const [stateOfLocalStorage, setStateOfLocalStorage] = useState(false)
-    const [loggedInUser, setLoggedInUser] = useState(null)
+    
 
-
-
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem('userData')
-        if (loggedInUser) {
-            const foundUser = JSON.parse(loggedInUser)
-            setLoggedInUser(foundUser)
-        }
-    }, [])
+    const {loggedInUser} = useLocalStorage()
+    console.log(loggedInUser);
 
 
 
@@ -45,10 +38,10 @@ const NavBar = () => {
                         )
                     })}
                 </div>
-                <div className='flex flex-row  justify-center item-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-[150px] p-1  rounded-full bg-pink-500'>
+               {loggedInUser && <div className='flex flex-row  justify-center item-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-[150px] p-1  rounded-full bg-pink-500'>
                     <p className='pt-1 mr-1 '>Favorite List </p>
                     <LikeAndDislikeButton />
-                </div>
+                </div>}
                 <div>
                     {!loggedInUser && <button
                         className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-24  rounded-full bg-pink-500"
