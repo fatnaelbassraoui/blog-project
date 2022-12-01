@@ -1,28 +1,32 @@
 import React, { useState } from 'react'
-import {useDispatch } from 'react-redux'
-import {loggedInUser} from '../States/userInfoSlice'
+import { useDispatch } from 'react-redux'
+import { loggedInUser } from '../States/userInfoSlice'
 
-const FormModalLogin = () => {
+const FormModalLogin = ({close}) => {
     const [formValue, setFormValue] = useState({})
     console.log(formValue);
 
-    
+
     const dispatch = useDispatch()
 
     const loginUser = (e) => {
-         e.preventDefault()
+        e.preventDefault()
         const formData = {
-            email:formValue.email,
+            email: formValue.email,
             password: formValue.password
         }
 
         dispatch(loggedInUser(formData))
+        setTimeout(() => {
+            close(false)
+            window.location.reload(false)
+        }, 1500)
     }
     return (
         <form
-        onSubmit={
-            loginUser
-        }
+            onSubmit={
+                loginUser
+            }
         >
             <div className="container">
                 <div>

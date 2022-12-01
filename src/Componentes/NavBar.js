@@ -9,24 +9,20 @@ import LogOut from './LogOut'
 const NavBar = () => {
     const [modalForm, setModalForm] = useState(false)
     const [stateOfLocalStorage, setStateOfLocalStorage] = useState(false)
-    // const isLoggedIn = localStorage.getItem('userData')
+    const [loggedInUser, setLoggedInUser] = useState(null)
 
 
 
-      useEffect(() => {
-        const items = JSON.parse(localStorage.getItem('userData'));
-        if (items) {
-            setStateOfLocalStorage(true);
-        }else{
-        setStateOfLocalStorage(false)
-    }
-        window.addEventListener('storage',()=>{
-            window.location.reload()
-        })
-          
-      }, [stateOfLocalStorage]);
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem('userData')
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser)
+            setLoggedInUser(foundUser)
+        }
+    }, [])
 
-    
+
+
     return (
         <nav>
             <div className="flex item-center bg-pink-500 p-4 text-white justify-between">
@@ -50,19 +46,21 @@ const NavBar = () => {
                     })}
                 </div>
                 <div className='flex flex-row  justify-center item-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-[150px] p-1  rounded-full bg-pink-500'>
-                 <p className='pt-1 mr-1 '>Favorite List </p> 
-                 <LikeAndDislikeButton />
+                    <p className='pt-1 mr-1 '>Favorite List </p>
+                    <LikeAndDislikeButton />
                 </div>
-                <button
-                    className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-24  rounded-full bg-pink-500"
-                    onClick={() => setModalForm(true)}
-                >
-                    Login
-                </button>
-            </div>
-            {modalForm && <ModalLogin close={setModalForm} />}
+                <div>
+                    {!loggedInUser && <button
+                        className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-400 w-24  rounded-full bg-pink-500"
+                        onClick={() => setModalForm(true)}
+                    >
+                        Login
+                    </button>}
+                </div>
+                {modalForm && <ModalLogin close={setModalForm} />}
 
-            {stateOfLocalStorage && <LogOut />}
+                {loggedInUser && <LogOut />}
+            </div>
         </nav>
     )
 }

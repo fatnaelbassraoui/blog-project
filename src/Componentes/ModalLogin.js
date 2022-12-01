@@ -13,7 +13,7 @@ function ModalLogin({ close }) {
                     >
                         X
                     </div>
-                    <FormModalLogin />
+                    <FormModalLogin close={close} />
                     <CreateNewAccount />
                 </div>
             </div>
