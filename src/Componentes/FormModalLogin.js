@@ -9,21 +9,21 @@ const FormModalLogin = () => {
     
     const dispatch = useDispatch()
 
-    const loginUser = () => {
-        // e.preventDefault()
-        const data = {
+    const loginUser = (e) => {
+         e.preventDefault()
+        const formData = {
             email:formValue.email,
             password: formValue.password
         }
-        // localStorage.setItem('Faty', JSON.stringify(formValue))
-        dispatch(loggedInUser(data))
+
+        dispatch(loggedInUser(formData))
     }
     return (
         <form
         onSubmit={
             loginUser
         }
-        >  
+        >
             <div className="container">
                 <div>
                     <input
