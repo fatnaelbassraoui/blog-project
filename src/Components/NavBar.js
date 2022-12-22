@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import LogoNavbar from '../Assets/Logo.png'
 import ModalLogin from './ModalLogin'
 import { NavbarLinks } from '../Constants/NavBarLink'
 import { Link } from 'react-router-dom'
-import LikeAndDislikeButton from '../Componentes/LikeAndDislikeButton'
+import LikeAndDislikeButton from '../Components/LikeAndDislikeButton'
 import LogOut from './LogOut'
 import useLocalStorage from './useLocalStorage'
 
@@ -12,7 +12,7 @@ const NavBar = () => {
     
 
     const {loggedInUser} = useLocalStorage()
-    console.log(loggedInUser);
+    
 
 
 

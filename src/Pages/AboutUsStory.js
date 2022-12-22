@@ -1,10 +1,10 @@
 import React from 'react'
-import NavBar from '../Componentes/NavBar'
-import Footer from '../Componentes/Footer'
+import NavBar from '../Components/NavBar'
+import Footer from '../Components/Footer'
 import library from '../Assets/library.jfif'
 import ourTeam from '../Assets/ourTeam.jfif'
 import libraryEvents from '../Assets/libraryEvents.jfif'
-import ScrollToTopButton from '../Componentes/ScrollToTopButton'
+import ScrollToTopButton from '../Components/ScrollToTopButton'
 
 const AboutUsStory = () => {
     return (
