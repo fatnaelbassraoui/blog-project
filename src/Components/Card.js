@@ -45,7 +45,7 @@ const Card = ({ post, setSingle }) => {
 
 
                 <div className="flex flex-col justify-center items-center   ">
-                    <div className=" flex flex-col justify-center items-center w-full  absolute bottom-0 p-2 bg-pink-200/[.7] text-white  text-xs rounded-lg ">
+                    <div className=" flex flex-col justify-center items-center w-full  absolute bottom-0 p-2 bg-orange-200/[.7] text-white  text-xs rounded-lg ">
                         <h2 className="  text-xl font-bold">{post.title}</h2>
                         <p>{`${post.body.slice(0, 40)}...`}</p>
                         
@@ -53,7 +53,7 @@ const Card = ({ post, setSingle }) => {
                         to={`posts/${post._id}`}
                         >
                         <button
-                            className=" w-[100px] p-2 mt-2 rounded-md bg-pink-300"
+                            className=" w-[100px] p-2 mt-2 rounded-md bg-orange-300"
                              onClick={() => [ setSingle(post)]}
                         >
                             Read more
@@ -66,9 +66,9 @@ const Card = ({ post, setSingle }) => {
                     className=' flex flex-col  top-1 right-1 mt-2 mb-2 absolute'
                     >
                     {loggedInUser && <button
-                        className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-100 hover:bg-purple-200"
+                        className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-orange-100 text-yellow-500 hover:bg-orange-200"
                         onClick={() =>[
-                            dispatch(insertInFavorite(post.author))
+                            dispatch(insertInFavorite(post.title))
                         ]
                             
                         }
@@ -78,13 +78,13 @@ const Card = ({ post, setSingle }) => {
                     </button>}
                    {loggedInUser && <button
                         onClick={() => deletePost()}
-                        className="text-xs m-auto p-2 mb-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
+                        className="text-xs m-auto p-2 mb-2 rounded-[50%] bg-orange-100 text-yellow-500 hover:bg-orange-200"
                     >
                         <RestoreFromTrashIcon />
                     </button>}
                     {post.featured && 
                     <div
-                    className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-white text-pink-300 hover:bg-purple-300"
+                    className="text-xs m-auto mb-2  p-2 rounded-[50%] bg-orange-100 text-yellow-500 hover:bg-orange-200"
                     >
                         <StarBorderIcon/>
                     </div>

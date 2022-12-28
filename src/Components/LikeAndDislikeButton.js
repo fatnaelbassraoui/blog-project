@@ -9,7 +9,7 @@ const LikeAndDislikeButton = () => {
     const favoriteList = useSelector(favorite)
     return (
         <>
-            <div className="relative mt-2 text-pink-300">
+            <div className="relative mt-2font-serif  text-yellow-500 text-xl  italic">
                 <input
                     type="checkbox"
                     id="sortbox"
@@ -19,7 +19,7 @@ const LikeAndDislikeButton = () => {
                     htmlFor="sortbox"
                     className="flex items-center space-x-1 cursor-pointer"
                 >
-                    <span className="text-lg ">
+                    <span className="text-lg  mt-3">
                         <FaHeart />
                     </span>
                     <svg
@@ -40,7 +40,7 @@ const LikeAndDislikeButton = () => {
 
                 <div
                     id="sortboxmenu"
-                    className="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-100 border border-gray-400 transition delay-75 ease-in-out z-10  w-[200px]"
+                    className="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-orange-100 border border-gray-400 transition delay-75 ease-in-out z-10  w-[200px]"
                 >
                     <ul className="block  text-gray-900 ">
                         {favoriteList && favoriteList.length <= 0 ? (
@@ -51,7 +51,7 @@ const LikeAndDislikeButton = () => {
                                 return (
                                     <li
                                     key={index}
-                                    className=" ml-8 p-2 flex flex-row text-justify font-semibold list-disc ">
+                                    className="  p-2 flex flex-row text-justify items-center justify-center text-yellow-500 font-serif italic list-disc ">
                                        <StarOutlineIcon/> {favorite} 
                                     </li>
                                 )

@@ -12,6 +12,8 @@ const ReadMorePosts = ({ post }) => {
   const { id } = useParams()
   const { data, loading, error } = useFetch(`${process.env.REACT_APP_SERVER_BASE_URL}/posts/${id}`)
   console.log(data);
+  const splittedPost = data && data.body.split('.')
+  console.log(splittedPost);
   return (
     <>
       <NavBar />
@@ -38,27 +40,18 @@ const ReadMorePosts = ({ post }) => {
       )}
       {data && !error && (
         <div
-          className='flex flex-row  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2  w-[50%] justify-center items-center mx-auto'
+          className='container justify-center items-center flex flex-wrap md:flex-nowrap gap-6 mx-auto text-center '
         >
           <div
-            className='w-[50%] '
-          >
-            <img
-              className='rounded-xl '
-              src={data.img}
-            />
-          </div>
-          <div
-            className='w-[50%] max-h-full flex flex-col  ml-3 mx-auto '
+            className='max-w-[600px] px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2'
           >
             <h1
-              className="font-serif	 text-center text-lg font-bold mb-8"
+              className='text-5xl  font-serif  mb-4 '
             >
               {data.title}
             </h1>
-
             <p
-              className='font-serif	 text-justify mb-8'
+              className='font-serif	 text-justify mb-4'
             >
               {data.body}
             </p>
@@ -67,10 +60,17 @@ const ReadMorePosts = ({ post }) => {
             >
               {data.author}
             </p>
+
           </div>
+          <img 
+          className='max-w-[500px] object-cover rounded-md xl:col-span-3 '
+          src={data.img}
+          alt="img" 
+          />
+         
         </div>
       )}
-      <Footer />
+      <Footer/>
     </>
   )
 }

@@ -56,7 +56,7 @@ const FormModalLogin = ({close}) => {
                     ></input>
                 </div>
                 <button
-                    className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-purple-200 p-2 rounded-lg mb-2 bg-purple-100 "
+                    className="font-serif  text-yellow-500 text-xl  italic flex justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-orange-300 w-[200px]  rounded-full bg-white "
                     type='submit'
                 >
                     Save

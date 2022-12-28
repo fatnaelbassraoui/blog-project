@@ -9,9 +9,9 @@ const ScrollToTopButton = () => {
     }
 
     return (
-        <div className="fixed bottom-4 right-2 bg-pink-400 rounded-[100%] w-[70px] h-[70px] text-center text-white ">
+        <div className="fixed bottom-4 right-2 bg-orange-300 rounded-[100%] w-[70px] h-[70px] text-center text-white ">
             <button onClick={() => scrollToTop()} className="mt-5">
-                Torna su
+                Turn up
             </button>
         </div>
     )

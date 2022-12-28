@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
-    userInfo: {}, // conterrà tutto l'utente (che riceviamo dal backend in caso di esito 200 
+    userInfo: {}, // conterrà i dati dell'utente (che riceviamo dal backend in caso di esito 200)
     loading: false,
     error: null,
     success: null

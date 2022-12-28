@@ -23,7 +23,7 @@ import { getFeaturedPostsRedux, featuredPost, error, loading } from '../States/p
 
     return (
         <>
-            <h1>Featured Post</h1>
+            
             <div className="container flex flex-col justify-center items-center">
 
                 <div ref={topDiv}></div>
