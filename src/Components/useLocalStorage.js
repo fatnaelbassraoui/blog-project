@@ -1,9 +1,8 @@
-import{ useState, useEffect} from "react";
+import { useState, useEffect } from 'react'
 
-const useLocalStorage =()=>{
-    const [loggedInUser, setLoggedInUser]= useState(null)
-    
-    
+const useLocalStorage = () => {
+    const [loggedInUser, setLoggedInUser] = useState(null)
+
     useEffect(() => {
         const loginUser = localStorage.getItem('userData')
         if (loginUser) {
@@ -12,9 +11,7 @@ const useLocalStorage =()=>{
         }
     }, [])
 
-    return {loggedInUser}
-
+    return { loggedInUser }
 }
-
 
 export default useLocalStorage

@@ -9,8 +9,7 @@ const Hero = () => {
                 backgroundImage: `url("${bgHero}")`,
                 backgroundSize: 'cover ',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center'
-
+                backgroundPosition: 'center',
             }}
         >
             <div className="container mx-auto w-[70%] flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">

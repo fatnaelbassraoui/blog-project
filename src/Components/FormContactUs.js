@@ -24,9 +24,9 @@ const FormContactUs = () => {
                     className="p-6 h-52 md:h-64"
                 />
             </div>
-            <div className="w-[400px]">
+            <div >
                 <form
-                    className="space-y-6 ng-untouched ng-pristine ng-valid "
+                    className="space-y-6  "
                     onSubmit={saveToLocalstorage}
                 >
                     <div className="w-full">

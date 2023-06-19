@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const ReadMoreModal = ({ close, singlePost }) => {
     return (
         <div className="w-screen h-screen fixed top-1/2 left-1/2 flex intem-center transform -translate-y-1/2 -translate-x-1/2 backdrop-blur-lg">
@@ -12,14 +11,10 @@ const ReadMoreModal = ({ close, singlePost }) => {
                     >
                         X
                     </div>
-                    <h1
-                    className='text-xl italic mb-1'
-                    >{singlePost.title}</h1>
-                    <p
-                     className='mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left'
-                     >
+                    <h1 className="text-xl italic mb-1">{singlePost.title}</h1>
+                    <p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
                         {singlePost.body}
-                        </p>
+                    </p>
                 </div>
             </div>
         </div>

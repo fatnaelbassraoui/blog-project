@@ -2,14 +2,25 @@ import React, { useEffect, useState } from 'react'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
 import ScrollToTopButton from '../Components/ScrollToTopButton'
+import MapsIcon from '../Assets/MapsIcon.png'
 import Facebook from '../Assets/Facebook.jpg'
-import Twittwr from '../Assets/Twitter.jpg'
+import Twitter from '../Assets/Twitter.jpg'
 import Instagram from '../Assets/Instagram.jpg'
 import Pinterest from '../Assets/Pinterest.jpg'
 import FormContactUs from '../Components/FormContactUs'
 import FollowMe from '../Assets/FollowMe.jpg'
 import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet'
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+
+const DefaultIcon = L.icon({
+    iconUrl: MapsIcon,
+    iconSize: [40, 50], // size of the icon
+    shadowSize: [50, 64], // size of the shadow
+
+
+})
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const OurContacts = () => {
     const [currentPosition, setCurrentPosition] = useState(null)
@@ -52,7 +63,7 @@ const OurContacts = () => {
                     />
                     <img
                         className="w-[100px] p-2"
-                        src={Twittwr}
+                        src={Twitter}
                         alt="twitter"
                     />
                     <img
@@ -61,78 +72,29 @@ const OurContacts = () => {
                         alt="pinterest"
                     />
                 </div>
-                <div className="  container flex flex-col items-center justify-center p-4 mx-auto">
-                    <div className="flex flex-col mx-auto w-[40%] ">
-                        <p className="font-semibold p-2 ">
-                            ✓ Vuoi propormi una collaborazione?
-                        </p>{' '}
-                        <p>
-                            {' '}
-                            Se desideri propormi nuovi progetti o iniziative
-                            interessanti, scrivimi compilando il form qui sopra
-                            o via mail [info@langolinodellalettura.com], sarò
-                            felice di leggerti!
-                        </p>{' '}
-                    </div>
-                    <div className="flex flex-col mx-auto w-[40%]">
-                        <p className="font-semibold p-2">
-                            ✓ Hai bisogno di una Copywriter o Assistente
-                            Virtuale ?{' '}
-                        </p>{' '}
-                        <p> Dai un’occhiata al mio sito web professionale</p>
-                    </div>
-                    <div className=" flex flex-col mx-auto w-[40%]">
-                        <p className="font-semibold p-2">
-                            ✓ Hai bisogno di una Copywriter o Assistente
-                            Virtuale ?{' '}
-                        </p>{' '}
-                        <p> Dai un’occhiata al mio sito web professionale</p>
-                    </div>
-                    <div className="flex flex-col mx-auto w-[40%]">
-                        <p className="font-semibold p-2">
-                            ✓ Vuoi farti un’idea in breve?{' '}
-                        </p>{' '}
-                        <p>
-                            {' '}
-                            Scarica il mio MediaKit e/o dai un’occhiata ai miei
-                            servizi
-                        </p>
-                    </div>
-                    <div className=" flex flex-col mx-auto w-[40%]">
-                        <p className="font-semibold p-2 ">
-                            ✓ Con chi ho collaborato?
-                        </p>{' '}
-                        <p>
-                            {' '}
-                            Consulta la sezione Collaborazioni e/o al mio
-                            Portfolio professionale
-                        </p>
-                    </div>
-                    <div className=" flex flex-col mx-auto w-[40%]">
-                        <p className="font-semibold p-2">✓ Hai dei dubbi? </p>{' '}
-                        <p>
-                            {' '}
-                            Leggi la sezione FAQ dove troverai le risposte alle
-                            domande più frequenti
-                        </p>
-                    </div>
-                </div>
+
             </div>
             {currentPosition && (
-                <MapContainer
-                    style={{ height: '400px' }}
-                    center={currentPosition}
-                    zoom={13}
-                    scrollWheelZoom={false}
+                <div
+                    className='flex items-center justify-center'
                 >
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={currentPosition}>
-                        <Popup>You are here</Popup>
-                    </Marker>
-                </MapContainer>
+                    <MapContainer
+                        style={{ height: '400px', width: '60%', borderRadius: '10px' }}
+                        center={currentPosition}
+                        zoom={13}
+                        scrollWheelZoom={false}
+                    >
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <Marker
+                            position={currentPosition}
+                        >
+                            <Popup>You are here</Popup>
+                        </Marker>
+                    </MapContainer>
+                </div>
             )}
             <ScrollToTopButton />
             <Footer />

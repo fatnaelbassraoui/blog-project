@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from 'react'
 import Card from './Card'
 import ScrollToTopButton from './ScrollToTopButton'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFeaturedPostsRedux, featuredPost, error, loading } from '../States/postFeaturedSlice'
+import {
+    getFeaturedPostsRedux,
+    featuredPost,
+    error,
+    loading,
+} from '../States/postFeaturedSlice'
 
-
- const FeaturedPost = () => {
-    
+const FeaturedPost = () => {
     const topDiv = useRef()
-
 
     const dispatch = useDispatch()
 
@@ -18,14 +20,11 @@ import { getFeaturedPostsRedux, featuredPost, error, loading } from '../States/p
 
     useEffect(() => {
         dispatch(getFeaturedPostsRedux())
-
     }, [dispatch])
 
     return (
         <>
-            
             <div className="container flex flex-col justify-center items-center">
-
                 <div ref={topDiv}></div>
                 {isLoading && !err && <h1>Caricamento in corso...</h1>}
                 {err && !isLoading && <h1>Ops si è verificato un errore..</h1>}
@@ -33,14 +32,12 @@ import { getFeaturedPostsRedux, featuredPost, error, loading } from '../States/p
                     {!isLoading &&
                         !err &&
                         allFeaturedPosts?.slice(0, 20).map((post, index) => {
-
                             return (
                                 <div
                                     key={index}
-                                    className='flex flex-col justify-center p-2'>
-                                    <Card
-                                        post={post}
-                                    />
+                                    className="flex flex-col justify-center p-2"
+                                >
+                                    <Card post={post} />
                                 </div>
                             )
                         })}
@@ -49,7 +46,6 @@ import { getFeaturedPostsRedux, featuredPost, error, loading } from '../States/p
                 <ScrollToTopButton />
             </div>
         </>
-
     )
 }
 

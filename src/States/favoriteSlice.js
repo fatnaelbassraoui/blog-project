@@ -1,10 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     favoritePost: [],
-    totalFavoritePosts: 0
+    totalFavoritePosts: 0,
 }
-
 
 export const favoriteSlice = createSlice({
     name: 'favorite',
@@ -17,13 +16,10 @@ export const favoriteSlice = createSlice({
 
         resetFromFavorite: (state) => {
             state.totalFavoritePosts = 0
-                state.favoritePost = []
-        }
-
-    }
-
+            state.favoritePost = []
+        },
+    },
 })
-
 
 export const { insertInFavorite } = favoriteSlice.actions
 export const { resetFromFavorite } = favoriteSlice.actions

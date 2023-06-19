@@ -4,16 +4,12 @@ import ScrollToTopButton from './ScrollToTopButton'
 import FeaturedPost from './FeaturedPost'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsRedux, post, error, loading } from '../States/postSlice'
-import StoryOfImperialCities from './StoryOfImperialCities'
-
-
 
 
 const Posts = () => {
     const topDiv = useRef()
 
     const dispatch = useDispatch()
-
 
     const allPosts = useSelector(post)
     const isLoading = useSelector(loading)
@@ -26,21 +22,13 @@ const Posts = () => {
     return (
         <>
             <div className="container  flex flex-col justify-center items-center m-auto mt-8">
-                <div>
-                    <StoryOfImperialCities />
-                </div>
-                <div
-                    className='mt-5'
-                >
+
+                <div className="mt-5">
                     <FeaturedPost />
                 </div>
                 <div ref={topDiv}></div>
-                <div
-                    className='flex justify-center items-center mb-6 '
-                >
-                    <h1
-                        className='font-serif italic text-4xl mt-6'
-                    >
+                <div className="flex justify-center items-center mb-6 ">
+                    <h1 className="font-serif italic text-4xl mt-6">
                         Other lovely places to visit
                     </h1>
                 </div>
@@ -53,10 +41,9 @@ const Posts = () => {
                             return (
                                 <div
                                     key={index}
-                                    className='flex flex-wrap justify-center p-2 mt-5'>
-                                    <Card
-                                        post={post}
-                                    />
+                                    className="flex flex-wrap justify-center p-2 mt-5"
+                                >
+                                    <Card post={post} />
                                 </div>
                             )
                         })}

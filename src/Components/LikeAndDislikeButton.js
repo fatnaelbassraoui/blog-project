@@ -1,11 +1,10 @@
 import React from 'react'
 import { FaHeart } from 'react-icons/fa'
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { useSelector } from 'react-redux';
-import { favorite } from '../States/favoriteSlice';
+import StarOutlineIcon from '@mui/icons-material/StarOutline'
+import { useSelector } from 'react-redux'
+import { favorite } from '../States/favoriteSlice'
 
 const LikeAndDislikeButton = () => {
-
     const favoriteList = useSelector(favorite)
     return (
         <>
@@ -50,9 +49,10 @@ const LikeAndDislikeButton = () => {
                                 console.log(favorite)
                                 return (
                                     <li
-                                    key={index}
-                                    className="  p-2 flex flex-row text-justify items-center justify-center text-yellow-500 font-serif italic list-disc ">
-                                       <StarOutlineIcon/> {favorite} 
+                                        key={index}
+                                        className="  p-2 flex flex-row text-justify items-center justify-center text-yellow-500 font-serif italic list-disc "
+                                    >
+                                        <StarOutlineIcon /> {favorite}
                                     </li>
                                 )
                             })

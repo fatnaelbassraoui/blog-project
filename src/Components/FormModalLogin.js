@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loggedInUser } from '../States/userInfoSlice'
 
-const FormModalLogin = ({close}) => {
+const FormModalLogin = ({ close }) => {
     const [formValue, setFormValue] = useState({})
-    console.log(formValue);
-
+    console.log(formValue)
 
     const dispatch = useDispatch()
 
@@ -13,7 +12,7 @@ const FormModalLogin = ({close}) => {
         e.preventDefault()
         const formData = {
             email: formValue.email,
-            password: formValue.password
+            password: formValue.password,
         }
 
         dispatch(loggedInUser(formData))
@@ -23,11 +22,7 @@ const FormModalLogin = ({close}) => {
         }, 1500)
     }
     return (
-        <form
-            onSubmit={
-                loginUser
-            }
-        >
+        <form onSubmit={loginUser}>
             <div className="container">
                 <div>
                     <input
@@ -57,7 +52,7 @@ const FormModalLogin = ({close}) => {
                 </div>
                 <button
                     className="font-serif  text-yellow-500 text-xl  italic flex justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-orange-300 w-[200px]  rounded-full bg-white "
-                    type='submit'
+                    type="submit"
                 >
                     Save
                 </button>

@@ -4,7 +4,7 @@ import './index.css'
 import Home from './Pages/Home'
 import OurContacts from './Pages/OurContacts'
 import PageNotFound from './Pages/PageNotFound'
-import ReadMorePosts from'./Pages/ReadMorePosts'
+import ReadMorePosts from './Pages/ReadMorePosts'
 import Privacy from './Pages/Privacy'
 import CreateAccount from './Pages/CreateAccount'
 
@@ -17,8 +17,8 @@ function App() {
                 <Route path="/our-contacts" element={<OurContacts />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="*" element={<PageNotFound />} />
-                <Route path='/posts/:id' element={<ReadMorePosts/>}/>
-                <Route path='/create-Account' element={<CreateAccount/>}/>
+                <Route path="/posts/:id" element={<ReadMorePosts />} />
+                <Route path="/create-Account" element={<CreateAccount />} />
             </Routes>
         </BrowserRouter>
     )
